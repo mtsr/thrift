@@ -70,9 +70,15 @@ pub fn main() {
     client.ping().unwrap();
     println!("ping()");
 
+    for i in range(0,2000) {
+      let _ = client.add(1, 1).unwrap();
+      if i % 100 == 0 {
+        println!("{}",i);
+      }
+    }
     // Add
     println!("1 + 1 = {}", client.add(1, 1).unwrap());
-
+/*
     // Work: divide
     let work = tutorial::Work { op: tutorial::Operation::DIVIDE, num1: 1, num2: 0, comment: None };
 
@@ -90,7 +96,7 @@ pub fn main() {
     let work = tutorial::Work { op: tutorial::Operation::SUBTRACT, num1: 15, num2: 10, comment: None };
     println!("15 - 10 = {}", client.calculate(2, work).unwrap());
 
-/*
+
     let ss = client.getStruct(1).unwrap();
     println!("Received log: {:?}", ss);
 */
